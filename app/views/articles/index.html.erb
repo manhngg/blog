@@ -1,0 +1,25 @@
+
+<h1>Liệt kê các bài viết</h1>
+
+<%= link_to 'Bài viết mới', new_article_path %>
+<table>
+  <tr>
+    <th>Tiêu đề</th>
+    <th>Nội dung</th>
+    <th></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.text %></td>
+    <td><%= link_to 'Xem', article_path(article) %></td>
+    <td><%= link_to 'Sửa', edit_article_path(article) %></td>
+    <td><%= link_to 'Xóa', article_path(article),
+              method: :delete,
+              data: { confirm: 'Bạn có chắc không?' } %></td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'Trở lại', root_path %>
